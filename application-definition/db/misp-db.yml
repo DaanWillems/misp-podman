@@ -1,17 +1,4 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: misp-db-claim
-  labels:
-    app: misp-db
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
----
-apiVersion: v1
 kind: Pod
 metadata:
   name: misp-db 
@@ -33,5 +20,6 @@ spec:
       mountPath: /var/lib/mysql
   volumes:
   - name: misp-db-volume
-    persistentVolumeClaim:
-      claimname: misp-db-claim
+    hostPath:
+      path: /media/misp/db
+      type: Directory
