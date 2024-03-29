@@ -17,7 +17,7 @@ spec:
       value: misp
     volumeMounts:
     - name: misp-db-volume
-      mountPath: /var/lib/mysql
+      mountPath: /var/lib/mysql:Z
   volumes:
   - name: misp-db-volume
     hostPath:
