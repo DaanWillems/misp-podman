@@ -7,6 +7,6 @@ WantedBy=default.target
 
 [Kube]
 # Point to the yaml file in the same directory
-Yaml=misp-db.yml
+Yaml=misp-core.yml
 # Use the quadlet-demo network
 Network=misp.network

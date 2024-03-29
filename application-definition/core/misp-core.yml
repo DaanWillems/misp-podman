@@ -1,37 +1,31 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: misp-db-claim
-  labels:
-    app: misp-db
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
----
-apiVersion: v1
 kind: Pod
 metadata:
-  name: misp-db 
+  name: misp-core
 spec:
   containers:
-  - name: misp-db
-    image: docker.io/mariadb:10.11
+  - name: misp-core
+    image: ghcr.io/misp/misp-docker/misp-core:latest
     env:
+    - name: BASE_URL
+      value: https://misp.daan.nl
     - name: MYSQL_USER
-      value: wordpress-db
+      value: misp-db
     - name: MYSQL_PASSWORD
       value: normalpass
-    - name: MYSQL_ROOT_PASSWORD
-      value: rootpass
+    - name: MYSQL_HOST
+      value: misp-db
     - name: MYSQL_DATABASE
       value: misp
+    - name: MYSQL_PORT
+      value: 3306
     volumeMounts:
-    - name: misp-db-volume
-      mountPath: /var/lib/mysql
+    - name: misp-config-volume
+      mountPath: /var/www/MISP/app/Config/
   volumes:
-  - name: misp-db-volume
-    persistentVolumeClaim:
-      claimname: misp-db-claim
+  - name: misp-config-volume
+    hostPath:
+      # directory location on host
+      path: /media/misp/config
+      # this field is optional
+      type: Directory

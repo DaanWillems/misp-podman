@@ -21,7 +21,7 @@ spec:
     image: docker.io/mariadb:10.11
     env:
     - name: MYSQL_USER
-      value: wordpress-db
+      value: misp-db 
     - name: MYSQL_PASSWORD
       value: normalpass
     - name: MYSQL_ROOT_PASSWORD
