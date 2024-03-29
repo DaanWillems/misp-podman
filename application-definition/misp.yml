@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress
+spec:
+  containers:
+  - name: wordpress
+    image: docker.io/library/wordpress:4.8-apache
+    env:
+    - name: WORDPRESS_DB_HOST
+      value: wordpress-db
+    - name: WORDPRESS_DB_PASSWORD
+      value: password 
