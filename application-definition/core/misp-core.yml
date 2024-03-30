@@ -21,7 +21,7 @@ spec:
       value: 3306
     volumeMounts:
     - name: misp-config-volume
-      mountPath: /var/www/MISP/app/Config/
+      mountPath: /var/www/MISP/app/Config/:Z
   volumes:
   - name: misp-config-volume
     hostPath:
