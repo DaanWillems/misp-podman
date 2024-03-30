@@ -7,6 +7,7 @@ This repository contains a templated containerized deployment for MISP that can 
 Run `sudo ./install.sh` which can be found in the application-definition.
 Then start the services with: 
 
-`systemctl daemon-reload`
-`systemctl start misp-db`
+`systemctl start misp-db` \\
+`systemctl start misp-redis`\\
+`systemctl start misp-modules`\\
 `systemctl start misp-core`
