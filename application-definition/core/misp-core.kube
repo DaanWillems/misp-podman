@@ -11,4 +11,4 @@ Yaml=misp-core.yml
 # Use the quadlet-demo network
 Network=misp.network
 #PublishPort=443:443
-PublishPort=10001:80
+PublishPort=443:443
