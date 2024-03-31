@@ -23,7 +23,8 @@ Then start the services with:
 `systemctl start misp-db` </br>
 `systemctl start misp-redis`</br>
 `systemctl start misp-modules`</br>
-`systemctl start misp-core`
+`systemctl start misp-core`</br>
+`systemctl start misp-nginx`
 
 ## TODO
 - [x] Split MISP Docker compose file into quadlets
