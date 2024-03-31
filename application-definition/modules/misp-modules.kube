@@ -1,9 +1,11 @@
 [Install]
 WantedBy=default.target
 
-#[Unit]
-#Requires=wordpress-db.service
-#After=wordpress-db.service
+[Unit]
+After=misp.service
+After=misp-redis.kube
+After=misp-network.service
+PartOf=misp.service
 
 [Kube]
 Yaml=misp-modules.yml

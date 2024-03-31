@@ -1,6 +1,13 @@
 [Install]
 WantedBy=default.target
 
+[Unit]
+After=misp.service
+After=misp-db.kube
+After=misp-redis.kube
+After=misp-network.service
+PartOf=misp.service
+
 [Kube]
 Yaml=misp-core.yml
 Network=misp.network
