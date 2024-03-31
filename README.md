@@ -5,6 +5,7 @@ This repository contains a templated containerized deployment for MISP that can 
 ## Installation
 
 Change the BASE\_URL in `application-definition/core/misp-core.yml`
+Also change the server name in `application-definition/nginx/a-misp.conf`
 
 Run `sudo ./install.sh` which can be found in the application-definition.
 
