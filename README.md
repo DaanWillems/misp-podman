@@ -4,7 +4,7 @@ This repository contains a templated containerized deployment for MISP that can 
 
 ## Installation
 
-Change the BASE_URL in `application-definition/core/misp-core.yml`
+Change the BASE\_URL in `application-definition/core/misp-core.yml`
 
 Run `sudo ./install.sh` which can be found in the application-definition.
 
