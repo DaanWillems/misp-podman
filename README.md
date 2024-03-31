@@ -16,6 +16,7 @@ Then create the directories
 `mkdir -p /media/misp/files` </br>
 `mkdir -p /media/misp/logs` </br>
 `mkdir -p /media/misp/gnupg` </br>
+`mkdir -p /media/misp/nginx-config` </br>
 
 Then start the services with: 
 
@@ -26,6 +27,9 @@ Then start the services with:
 
 ## TODO
 - [x] Split MISP Docker compose file into quadlets
-- [ ] Add NGINX reverse proxy docker container to deployment
+- [x] Add NGINX reverse proxy docker container to deployment
+- [ ] Add example NGINX SSL termination single host
+- [ ] Tie services together in systemd app
 - [ ] Setup deployment with ansible instead of install script
 - [ ] Template all variables in the deployment with ansible to deploy multiple instances  
+- [ ] Add example NGINX SSL termination multiple hosts

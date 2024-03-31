@@ -1,14 +1,7 @@
 [Install]
 WantedBy=default.target
 
-#[Unit]
-#Requires=wordpress-db.service
-#After=wordpress-db.service
-
 [Kube]
-# Point to the yaml file in the same directory
 Yaml=misp-core.yml
-# Use the quadlet-demo network
 Network=misp.network
-#PublishPort=443:443
-PublishPort=443:443
+PublishPort=12345:80

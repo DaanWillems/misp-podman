@@ -8,7 +8,7 @@ spec:
     image: ghcr.io/misp/misp-docker/misp-core:latest
     env:
     - name: BASE_URL
-      value: https://misp.daan.nl
+      value: http://misp.daan.nl
     - name: MYSQL_USER
       value: misp-db
     - name: MYSQL_PASSWORD

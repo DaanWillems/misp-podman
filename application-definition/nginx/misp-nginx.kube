@@ -1,0 +1,7 @@
+[Install]
+WantedBy=default.target
+
+[Kube]
+Yaml=misp-nginx.yml
+PublishPort=443:443
+PublishPort=80:80
