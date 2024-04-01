@@ -12,14 +12,6 @@
     path: /etc/containers/systemd/misp/{{ item.name }}
     state: directory
   loop: "{{ misp_servers }}"
-#DB
-#- name: Create MISP subdirectories for systemd services 
-#  ansible.builtin.file:
-#    path: /etc/containers/systemd/misp-{{ item[0].name }}/{{ item[1].name }}
-#    state: directory
-#  with_nested:
-#    - "{{ misp_servers }}"
-#    - "{{ misp_files }}"
 - name: Install MISP kube files
   template:
     src: "{{ item[1].name }}/misp-{{ item[1].name }}.kube.j2"
@@ -42,50 +34,3 @@
     dest: /etc/containers/systemd/misp/{{ item.name }}/misp.network
   become: yes
   loop: "{{ misp_servers}}"
-
-
-#Redis
-#- name: Creates MISP redis directory
-#  ansible.builtin.file:
-#    path: /etc/containers/systemd/misp/redis
-#    state: directory
-#- name: Install MISP REDIS kube file
-#  template:
-#    src: db/misp-db.kube.j2
-#    dest: /etc/containers/systemd/misp/redis/misp-redis.kube
-#  become: yes
-#- name: Install MISP REDIS yml file
-#  template:
-#    src: db/misp-db.yml.j2
-#    dest: /etc/containers/systemd/misp/redis/misp-redis.yml
-#  become: yes
-##Modules
-#- name: Creates MISP modules directory
-#  ansible.builtin.file:
-#    path: /etc/containers/systemd/misp/modules
-#    state: directory
-#- name: Install MISP modules kube file
-#  template:
-#    src: modules/misp-modules.kube.j2
-#    dest: /etc/containers/systemd/misp/modules/misp-modules.kube
-#  become: yes
-#- name: Install MISP modules yml file
-#  template:
-#    src: modules/misp-modules.yml.j2
-#    dest: /etc/containers/systemd/misp/modules/misp-modules.yml
-#  become: yes
-##Core
-#- name: Creates MISP core directory
-#  ansible.builtin.file:
-#    path: /etc/containers/systemd/misp/core
-#    state: directory
-#- name: Install MISP Core kube file
-#  template:
-#    src: core/misp-core.kube.j2
-#    dest: /etc/containers/systemd/misp/core/misp-core.kube
-#  become: yes
-#- name: Install MISP REDIS yml file
-#  template:
-#    src: core/misp-core.yml.j2
-#    dest: /etc/containers/systemd/misp/core/misp-core.yml
-#  become: yes
