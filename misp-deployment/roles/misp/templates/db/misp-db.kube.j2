@@ -7,5 +7,5 @@ After=misp-network.service
 PartOf=misp.service
 
 [Kube]
-Yaml=misp-db.yml
+Yaml=misp-{{ item[0].name }}-db.yml
 Network=misp.network

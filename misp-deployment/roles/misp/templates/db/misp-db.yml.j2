@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: misp-db 
+  name: misp-{{ item[0].name }}-db 
 spec:
   containers:
-  - name: misp-db
+  - name: misp-{{ item[0].name }}-db
     image: docker.io/mariadb:10.11
     env:
     - name: MYSQL_USER

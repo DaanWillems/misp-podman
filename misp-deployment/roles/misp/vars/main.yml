@@ -1,3 +1,6 @@
 ---
-# vars file for misp
-motd_message: "Welcome to !"
+misp_servers:
+  - name: a
+    online: true
+  - name: b
+    online: false
