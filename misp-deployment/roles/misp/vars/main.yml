@@ -1,0 +1,3 @@
+---
+# vars file for misp
+motd_message: "Welcome to !"

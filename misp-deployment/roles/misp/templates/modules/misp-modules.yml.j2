@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: misp-modules
+spec:
+  containers:
+  - name: misp-modules
+    image: ghcr.io/misp/misp-docker/misp-modules:latest
+    env:
+    - name: REDIS_BACKEND
+      value: redis

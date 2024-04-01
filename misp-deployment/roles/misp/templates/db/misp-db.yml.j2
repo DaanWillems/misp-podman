@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: misp-db 
+spec:
+  containers:
+  - name: misp-db
+    image: docker.io/mariadb:10.11
+    env:
+    - name: MYSQL_USER
+      value: misp-db 
+    - name: MYSQL_PASSWORD
+      value: normalpass
+    - name: MYSQL_ROOT_PASSWORD
+      value: rootpass
+    - name: MYSQL_DATABASE
+      value: misp
+    volumeMounts:
+    - name: misp-db-volume
+      mountPath: /var/lib/mysql:Z
+  volumes:
+  - name: misp-db-volume
+    hostPath:
+      path: /media/misp/db
+      type: Directory

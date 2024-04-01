@@ -1,0 +1,13 @@
+[Unit]
+Description=MISP Application
+Requires=misp-network.service
+Requires=misp-db.service
+Requires=misp-redis.service
+Requires=misp-modules.service
+Requires=misp-core.service
+
+[Service]
+Type=oneshot
+# Execute a dummy program
+ExecStart=/bin/true
+RemainAfterExit=yes
