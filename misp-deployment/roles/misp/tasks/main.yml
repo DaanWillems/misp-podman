@@ -19,10 +19,8 @@
     path: /media/misp/misp-{{ item[0].name  }}/{{ item[1] }}
     state: directory
   with_nested:
-    - "{{ misp_servers}}"
-    - "['files', 'config', 'gnupg', 'logs', 'certs']"
-
-  loop: "{{ misp_servers }}"
+    - "{{ misp_servers }}"
+    - ['files', 'db', 'config', 'gnupg', 'logs', 'certs']
 - name: Install MISP kube files
   template:
     src: "{{ item[1].name }}/misp-{{ item[1].name }}.kube.j2"
@@ -42,6 +40,12 @@
 - name: Install MISP network files
   template:
     src: "network/misp.network.j2"
-    dest: /etc/containers/systemd/misp/{{ item.name }}/misp.network
+    dest: /etc/containers/systemd/misp/{{ item.name }}/misp-{{ item.name }}.network
   become: yes
-  loop: "{{ misp_servers}}"
+  loop: "{{ misp_servers }}"
+- name: Install MISP app files
+  template:
+    src: "misp.service.j2"
+    dest: /etc/systemd/system/misp-{{ item.name }}.service
+  become: yes
+  loop: "{{ misp_servers }}"

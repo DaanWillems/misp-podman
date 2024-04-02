@@ -21,5 +21,5 @@ spec:
   volumes:
   - name: misp-db-volume
     hostPath:
-      path: /media/misp-{{ item[0].name }}/db
+      path: /media/misp/misp-{{ item[0].name }}/db
       type: Directory

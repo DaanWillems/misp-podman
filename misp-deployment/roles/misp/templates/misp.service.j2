@@ -1,10 +1,10 @@
 [Unit]
 Description=MISP Application
-Requires=misp-{{ item[0].name  }}-network.service
-Requires=misp-{{ item[0].name  }}-db.service
-Requires=misp-{{ item[0].name  }}-redis.service
-Requires=misp-{{ item[0].name  }}-modules.service
-Requires=misp-{{ item[0].name  }}-core.service
+Requires=misp-{{ item.name }}-network.service
+Requires=misp-{{ item.name }}-db.service
+Requires=misp-{{ item.name }}-redis.service
+Requires=misp-{{ item.name }}-modules.service
+Requires=misp-{{ item.name }}-core.service
 
 [Service]
 Type=oneshot

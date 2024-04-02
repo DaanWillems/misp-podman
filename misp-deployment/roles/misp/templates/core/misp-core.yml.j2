@@ -36,23 +36,23 @@ spec:
   volumes:
   - name: misp-config-volume
     hostPath:
-      path: /media/misp-{{ item[0].name }}/config
+      path: /media/misp/misp-{{ item[0].name }}/config
       type: Directory
   - name: misp-logs-volume
     hostPath:
-      path: /media/misp-{{ item[0].name }}/logs
+      path: /media/misp/misp-{{ item[0].name }}/logs
       type: Directory
   - name: misp-files-volume
     hostPath:
-      path: /media/misp-{{ item[0].name }}/files
+      path: /media/misp/misp-{{ item[0].name }}/files
       type: Directory
   - name: misp-certs-volume
     hostPath:
-      path: /media/misp/-{{ item[0].name }}certs
+      path: /media/misp/misp-{{ item[0].name }}/certs
       type: Directory
   - name: misp-gnupg-volume
     hostPath:
-      path: /media/misp-{{ item[0].name }}/gnupg
+      path: /media/misp/misp-{{ item[0].name }}/gnupg
       type: Directory
 
 

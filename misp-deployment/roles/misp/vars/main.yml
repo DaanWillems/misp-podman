@@ -4,5 +4,5 @@ misp_servers:
     port: 12345
     online: true
   - name: b
-    port: 12345
+    port: 12346
     online: false
