@@ -21,6 +21,12 @@
   with_nested:
     - "{{ misp_servers }}"
     - ['files', 'db', 'config', 'gnupg', 'logs', 'certs']
+
+- name: Creates MISP Proxy media directories
+  ansible.builtin.file:
+    path: /media/misp/misp-proxy/
+    state: directory
+
 - name: Install MISP kube files
   template:
     src: "{{ item[1].name }}/misp-{{ item[1].name }}.kube.j2"
@@ -49,3 +55,20 @@
     dest: /etc/systemd/system/misp-{{ item.name }}.service
   become: yes
   loop: "{{ misp_servers }}"
+- name: Install NGINX systemd
+  template:
+    src: "nginx/nginx.kube.j2"
+    dest: /etc/containers/systemd/misp-proxy.kube
+  become: yes
+- name: Install NGINX systemd
+  template:
+    src: "nginx/nginx.yml.j2"
+    dest: /etc/containers/systemd/misp-proxy.yml
+  become: yes
+- name: Install MISP nginx configs
+  template:
+    src: "nginx/misp.conf.j2"
+    dest: /media/misp/misp-proxy/misp-{{ item.name }}.conf
+  become: yes
+  loop: "{{ misp_servers }}"
+
