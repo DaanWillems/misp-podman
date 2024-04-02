@@ -2,10 +2,10 @@
 WantedBy=default.target
 
 [Unit]
-After=misp.service
-After=misp-network.service
-PartOf=misp.service
+After=misp-{{ item[0].name }}.service
+After=misp-{{ item[0].name }}-network.service
+PartOf=misp-{{ item[0].name }}.service
 
 [Kube]
-Yaml=misp-redis.yml
-Network=misp.network
+Yaml=misp-{{ item[0].name }}-redis.yml
+Network=misp-{{ item[0].name }}.network

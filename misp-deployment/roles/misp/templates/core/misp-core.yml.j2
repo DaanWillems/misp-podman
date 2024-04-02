@@ -44,15 +44,15 @@ spec:
       type: Directory
   - name: misp-files-volume
     hostPath:
-      path: /media/misp/files
+      path: /media/misp-{{ item[0].name }}/files
       type: Directory
   - name: misp-certs-volume
     hostPath:
-      path: /media/misp/certs
+      path: /media/misp/-{{ item[0].name }}certs
       type: Directory
   - name: misp-gnupg-volume
     hostPath:
-      path: /media/misp/gnupg
+      path: /media/misp-{{ item[0].name }}/gnupg
       type: Directory
 
 

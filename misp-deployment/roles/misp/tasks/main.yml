@@ -7,10 +7,21 @@
   ansible.builtin.file:
     path: /etc/containers/systemd/misp/
     state: directory
+
 - name: Creates MISP server directories
   ansible.builtin.file:
     path: /etc/containers/systemd/misp/{{ item.name }}
     state: directory
+  loop: "{{ misp_servers}}"
+
+- name: Creates MISP media directories
+  ansible.builtin.file:
+    path: /media/misp/misp-{{ item[0].name  }}/{{ item[1] }}
+    state: directory
+  with_nested:
+    - "{{ misp_servers}}"
+    - "['files', 'config', 'gnupg', 'logs', 'certs']"
+
   loop: "{{ misp_servers }}"
 - name: Install MISP kube files
   template:

@@ -5,6 +5,7 @@ WantedBy=default.target
 After=misp-{{ item[0].name }}.service
 After=misp-{{ item[0].name }}-db.kube
 After=misp-{{ item[0].name }}-redis.kube
+After=misp-{{ item[0].name }}-modules.kube
 After=misp-{{ item[0].name }}-network.service
 PartOf=misp{{ item[0].name }}-.service
 
