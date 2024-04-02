@@ -1,6 +1,8 @@
 ---
 misp_servers:
   - name: a
+    port: 12345
     online: true
   - name: b
+    port: 12345
     online: false

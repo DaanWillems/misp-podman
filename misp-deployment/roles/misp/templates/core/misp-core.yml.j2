@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: misp-core
+  name: misp-{{ item[0].name }}-core
 spec:
   containers:
-  - name: misp-core
+  - name: misp-{{ item[0].name }}-core
     image: ghcr.io/misp/misp-docker/misp-core:latest
     env:
     - name: BASE_URL
@@ -14,7 +14,7 @@ spec:
     - name: MYSQL_PASSWORD
       value: normalpass
     - name: MYSQL_HOST
-      value: misp-db
+      value: misp-{{ item[0].name }}-db
     - name: MYSQL_DATABASE
       value: misp
     - name: MYSQL_PORT
@@ -36,11 +36,11 @@ spec:
   volumes:
   - name: misp-config-volume
     hostPath:
-      path: /media/misp/config
+      path: /media/misp-{{ item[0].name }}/config
       type: Directory
   - name: misp-logs-volume
     hostPath:
-      path: /media/misp/logs
+      path: /media/misp-{{ item[0].name }}/logs
       type: Directory
   - name: misp-files-volume
     hostPath:

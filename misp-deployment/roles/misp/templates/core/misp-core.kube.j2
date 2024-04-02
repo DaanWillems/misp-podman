@@ -2,13 +2,13 @@
 WantedBy=default.target
 
 [Unit]
-After=misp.service
-After=misp-db.kube
-After=misp-redis.kube
-After=misp-network.service
-PartOf=misp.service
+After=misp-{{ item[0].name }}.service
+After=misp-{{ item[0].name }}-db.kube
+After=misp-{{ item[0].name }}-redis.kube
+After=misp-{{ item[0].name }}-network.service
+PartOf=misp{{ item[0].name }}-.service
 
 [Kube]
-Yaml=misp-core.yml
-Network=misp.network
-PublishPort=12345:80
+Yaml=misp-{{ item[0].name }}-core.yml
+Network=misp-{{ item[0].name }}.network
+PublishPort={{ item[0].port }}:80
