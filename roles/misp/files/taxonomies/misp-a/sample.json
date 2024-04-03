@@ -1,0 +1,22 @@
+{
+  "namespace": "sample",
+  "description": "Some descriptive words",
+  "version": 1,
+  "predicates": [
+    {
+      "value": "my-predicate",
+      "expanded": "my-predicate"
+    }
+  ],
+  "values": [
+    {
+      "predicate": "my-predicate",
+      "entry": [
+        {
+          "value": "a-value",
+          "expanded": "A value"
+        }
+      ]
+    }
+  ]
+}
