@@ -3,6 +3,7 @@
   ansible.builtin.file:
     state: absent
     path: /etc/containers/systemd/misp
+
 - name: Creates MISP server directory
   ansible.builtin.file:
     path: /etc/containers/systemd/misp/
@@ -35,6 +36,7 @@
   with_nested:
     - "{{ misp_servers }}"
     - "{{ misp_files }}"
+
 - name: Install MISP yaml files
   template:
     src: "{{ item[1].name }}/misp-{{ item[1].name }}.yml.j2"
@@ -43,28 +45,49 @@
   with_nested:
     - "{{ misp_servers }}"
     - "{{ misp_files }}"
+
 - name: Install MISP network files
   template:
     src: "network/misp.network.j2"
     dest: /etc/containers/systemd/misp/{{ item.name }}/misp-{{ item.name }}.network
   become: yes
   loop: "{{ misp_servers }}"
+
 - name: Install MISP app files
   template:
     src: "misp.service.j2"
     dest: /etc/systemd/system/misp-{{ item.name }}.service
   become: yes
   loop: "{{ misp_servers }}"
+
+- name: Install MISP config files
+  copy:
+    src: "config/misp-{{ item.name }}/"
+    dest: /media/misp/misp-{{ item.name }}/config/
+  become: yes
+  ignore_errors: true #Some files are not present so we can ignore those errors`
+  loop: "{{ misp_servers }}"
+
+- name: Install MISP taxonomy files
+  copy:
+    src: "taxonomies/misp-{{ item.name }}/"
+    dest: /media/misp/misp-{{ item.name }}/taxonomies/custom/
+  become: yes
+  ignore_errors: true #Some files are not present so we can ignore those errors`
+  loop: "{{ misp_servers }}"
+
 - name: Install NGINX systemd
   template:
     src: "nginx/nginx.kube.j2"
     dest: /etc/containers/systemd/misp-proxy.kube
   become: yes
+
 - name: Install NGINX systemd
   template:
     src: "nginx/nginx.yml.j2"
     dest: /etc/containers/systemd/misp-proxy.yml
   become: yes
+
 - name: Install MISP nginx configs
   template:
     src: "nginx/misp.conf.j2"
