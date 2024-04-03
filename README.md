@@ -3,8 +3,8 @@ This repository contains a templated containerized deployment for MISP that can 
 The point is to easily provision various MISP servers that have different configurations and can talk to each other in various topologies. The MISP servers should be production ready and also easily destructable when they are no longer needed. 
 
 This implementation omits a couple of important aspects of the deployment:
-- Secrets: The database, admin accounts etc should be securely provisioned instea of plain texxt. This depends on your secret manager.
-- Certs: Depending on the method you use to obtain SSL certificates this can be fully automasted or not at all
+- Secrets: The database, admin accounts etc should be securely provisioned instead of plain text. This depends on your secret manager.
+- Certs: Depending on the method you use to obtain SSL certificates this can either be fully automated or not at all
 
 The following issues are known:
 - The MISP docker container overwrites the taxonomies on startup preventing custom taxonomies from existing. This must be fixed in the vendors repository.
