@@ -1,0 +1,7 @@
+---
+# defaults file for misp
+misp_files:
+  - name: db
+  - name: modules
+  - name: redis
+  - name: core 

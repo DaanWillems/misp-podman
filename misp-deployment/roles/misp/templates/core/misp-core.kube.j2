@@ -1,0 +1,15 @@
+[Install]
+WantedBy=default.target
+
+[Unit]
+After=misp-{{ item[0].name }}.service
+After=misp-{{ item[0].name }}-db.kube
+After=misp-{{ item[0].name }}-redis.kube
+After=misp-{{ item[0].name }}-modules.kube
+After=misp-{{ item[0].name }}-network.service
+PartOf=misp-{{ item[0].name }}.service
+
+[Kube]
+Yaml=misp-{{ item[0].name }}-core.yml
+Network=misp-{{ item[0].name }}.network
+PublishPort={{ item[0].port }}:80

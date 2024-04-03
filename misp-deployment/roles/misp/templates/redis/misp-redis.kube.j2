@@ -1,0 +1,11 @@
+[Install]
+WantedBy=default.target
+
+[Unit]
+After=misp-{{ item[0].name }}.service
+After=misp-{{ item[0].name }}-network.service
+PartOf=misp-{{ item[0].name }}.service
+
+[Kube]
+Yaml=misp-{{ item[0].name }}-redis.yml
+Network=misp-{{ item[0].name }}.network

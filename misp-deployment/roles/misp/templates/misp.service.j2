@@ -1,0 +1,13 @@
+[Unit]
+Description=MISP Application
+Requires=misp-{{ item.name }}-network.service
+Requires=misp-{{ item.name }}-db.service
+Requires=misp-{{ item.name }}-redis.service
+Requires=misp-{{ item.name }}-modules.service
+Requires=misp-{{ item.name }}-core.service
+
+[Service]
+Type=oneshot
+# Execute a dummy program
+ExecStart=/bin/true
+RemainAfterExit=yes

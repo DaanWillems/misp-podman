@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: misp-nginx
+spec:
+  containers:
+  - name: misp-nginx
+    image: docker.io/library/nginx
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/nginx/conf.d/:Z
+  volumes:
+  - name: config-volume
+    hostPath:
+      path: /media/misp/misp-proxy
+      type: Directory
