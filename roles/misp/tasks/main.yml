@@ -70,11 +70,11 @@
 
 - name: Install MISP taxonomy files
   copy:
-    src: "taxonomies/misp-{{ item.name }}/"
-    dest: /media/misp/misp-{{ item.name }}/taxonomies/custom/
+    src: "taxonomies/{{ item.1 }}/"
+    dest: /media/misp/misp-{{ item.0.name }}/files/taxonomies/{{ item.1  }}/
   become: yes
   ignore_errors: true #Some files are not present so we can ignore those errors`
-  loop: "{{ misp_servers }}"
+  loop: "{{ misp_servers | subelements('taxonomies', 'skip_missing=True') }}"
 
 - name: Install NGINX systemd
   template:
