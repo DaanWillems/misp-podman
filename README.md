@@ -18,15 +18,17 @@ Prepared files for misp like configs and taxonomies should be placed in roles/mi
 Running the playbook will overwrite MISP generated file if new config files are added later.
 
 Persistent configuration is split into:
-- misp-<name>/config/ -- All MISP config files  
-- misp-<name>/files/  -- For things like custom taxonomies
+- config/misp-\<name\>-- All MISP config files  
+- files/misp-\<name\>-- For things like custom taxonomies
+
+Be aware that the container will override the base\_url in config.php with whatever you have entered in vars/main.yml
 
 ### Server syncs
 To setup server syncs add them to config in roles/misp/vars/main.yml to the config (view the example config).
 In a production environment the auth keys for MISP servers should be managed by some type of vault solution like Ansible Vault or Hashicorp Vault.
 
 ### MISP Logging
-The provided MISP containers do not log all logs to stdout, and instead write to files. These are mounted to /media/misp/misp-<name>/logs and should be read by some type of log parser
+The provided MISP containers do not log all logs to stdout, and instead write to files. These are mounted to /media/misp/misp-\<name\>/logs and should be read by some type of log parser
 
 ### MISP Monitoring
 MISP provides no Prometheus endpoints. Therefore we can monitore by HTTP polling, log parsing and black box testing. 
@@ -54,7 +56,9 @@ To expose the MISP servers start the reverse proxy:
 - [x] Tie services together in systemd app
 - [x] Setup deployment with ansible instead of install script
 - [x] Template all variables in the deployment with ansible to deploy multiple instances  
-- [ ] Deploy misp configuration files with ansible
+- [x] Deploy misp configuration files with ansible
+- [x] Deploy misp taxonomies with ansible (untested)
+- [ ] Deploy misp image files
 - [ ] Provision MISP server syncs with ansible
 - [ ] Provision mounted volume for misp-proxy certs
 
