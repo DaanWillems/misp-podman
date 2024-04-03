@@ -2,7 +2,7 @@
 misp_servers:
   - name: a
     port: 12345
-    online: true
+    hostname: misp-a.daan.nl
   - name: b
     port: 12346
-    online: false
+    hostname: misp-b.daan.nl

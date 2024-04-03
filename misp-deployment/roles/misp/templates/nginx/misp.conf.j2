@@ -1,8 +1,8 @@
 server {
   listen 80;
-  server_name misp.daan.nl;
+  server_name {{ item.hostname }};
 
   location / {
-    proxy_pass http://host.containers.internal:12345;
+    proxy_pass http://host.containers.internal:{{ item.port }};
   }
 }
