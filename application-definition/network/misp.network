@@ -1,4 +1,0 @@
-[Unit]
-PartOf=misp.service
-
-[Network]

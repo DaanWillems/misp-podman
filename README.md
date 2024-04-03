@@ -7,10 +7,10 @@ By default this setup install two MISP servers hosted on `http://misp-a.daan.nl`
 It also install a reverse proxy to expose these two instances to the internet. 
 
 ### Server config
-The servers are configured in misp-deployment/roles/misp/vars/main.yml.
+The servers are configured in roles/misp/vars/main.yml.
 
 ### SSL Config
-To setup SSL on the servers change the misp/templates/misp-proxy/misp.conf.j2 file to include a cert. 
+To setup SSL on the servers change the roles/misp/templates/misp-proxy/misp.conf.j2 file to include a cert. 
 Certs should be placed into a persistent volume (todo: include in playbook)
 
 ### MISP Configuration
