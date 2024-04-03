@@ -1,8 +1,8 @@
 # misp-podman
 This repository contains a templated containerized deployment for MISP that can be deployed with Ansible.
-The point is to easily provision various MISP servers that have different configurations and can talk to each other in various topologies. The MISP servers should be production ready and also easily destrucable when they are no longer needed. 
+The point is to easily provision various MISP servers that have different configurations and can talk to each other in various topologies. The MISP servers should be production ready and also easily destructable when they are no longer needed. 
 
-This implementations a couple of important aspects of the deployment:
+This implementation omits a couple of important aspects of the deployment:
 - Secrets: The database, admin accounts etc should be securely provisioned instea of plain texxt. This depends on your secret manager.
 - Certs: Depending on the method you use to obtain SSL certificates this can be fully automasted or not at all
 
