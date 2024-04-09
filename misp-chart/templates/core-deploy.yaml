@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: misp
+  labels:
+    app: misp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: misp-core
+  template:
+    metadata:
+      labels:
+        app: misp
+        pod: misp-core
+    spec:
+      containers:
+      - name: misp-core
+        image: ghcr.io/misp/misp-docker/misp-core:latest
+        env:
+        - name: BASE_URL
+          value: "http://misp.daan.nl"
+        - name: MYSQL_USER
+          value: "misp-db"
+        - name: MYSQL_PASSWORD
+          value: "normalpass"
+        - name: MYSQL_HOST
+          value: "misp-db"
+        - name: MYSQL_DATABASE
+          value: "misp"
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: DISABLE_SSL_REDIRECT
+          value: "true"
+          #        volumeMounts:
+          #        - name: misp-config-volume
+          #          mountPath: /var/www/MISP/app/Config/:Z
+          #        - name: misp-logs-volume
+          #          mountPath: /var/www/MISP/app/tmp/logs/:Z
+          #        - name: misp-files-volume
+          #          mountPath: /var/www/MISP/app/files/:Z
+          #        - name: misp-certs-volume
+          #          mountPath: /etc/nginx/certs/:Z
+          #        - name: misp-gnupg-volume
+          #          mountPath: /var/www/MISP/.gnupg/:Z
+          #    
+          #      volumes:
+          #      - name: misp-config-volume
+          #        hostPath:
+          #          path: /media/misp/misp-{{ item[0].name }}/config
+          #          type: Directory
+          #      - name: misp-logs-volume
+          #        hostPath:
+          #          path: /media/misp/misp-{{ item[0].name }}/logs
+          #          type: Directory
+          #      - name: misp-files-volume
+          #        hostPath:
+          #          path: /media/misp/misp-{{ item[0].name }}/files
+          #          type: Directory
+          #      - name: misp-certs-volume
+          #        hostPath:
+          #          path: /media/misp/misp-{{ item[0].name }}/certs
+          #          type: Directory
+          #      - name: misp-gnupg-volume
+          #        hostPath:
+          #          path: /media/misp/misp-{{ item[0].name }}/gnupg
+          #          type: Directory
+          #    
+          #    

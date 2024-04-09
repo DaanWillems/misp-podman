@@ -5,7 +5,8 @@ metadata:
 spec:
   containers:
   - name: misp-{{ item[0].name }}-core
-    image: ghcr.io/misp/misp-docker/misp-core:latest
+    #image: ghcr.io/misp/misp-docker/misp-core:latest
+    image: docker.io/library/misp-core
     env:
     - name: BASE_URL
       value: http://{{ item[0].hostname }}
